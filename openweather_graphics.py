@@ -111,7 +111,7 @@ class OpenWeather_Graphics(displayio.Group):
             self.city_text = Label(self.medium_font, text=city_name)
             self.city_text.x = 15
             self.city_text.y = 22
-            self.city_text.color = 0xFF0080
+            self.city_text.color = 0xFF00FF
             self._text_group.append(self.city_text)
 
         self.update_time()
