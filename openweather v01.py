@@ -36,7 +36,7 @@ pyportal = PyPortal(url=DATA_SOURCE,
                     status_neopixel=board.NEOPIXEL,
                     default_bg=0x000000)
 
-pyportal.set_backlight(0.5)
+pyportal.set_backlight(0.75)
 gfx = openweather_graphics.OpenWeather_Graphics(pyportal.splash, am_pm=True, celsius=False)
 
 localtile_refresh = None
