@@ -1,0 +1,5 @@
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
+[InternetShortcut]
+IDList=
+URL=http://api.openweathermap.org/data/2.5/weather?q=Richland,%20WA,%20US&appid=1aea7f0956b261b846b8d8bed32a3bd7
