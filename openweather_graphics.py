@@ -46,13 +46,13 @@ class OpenWeather_Graphics(displayio.Group):
         self.sunrise_text = Label(self.small_font, max_glyphs=20)
         self.sunrise_text.x = 205
         self.sunrise_text.y = 46
-        self.sunrise_text.color = 0xFF00FF
+        self.sunrise_text.color = 0xFFFF00
         self._text_group.append(self.sunrise_text)
 
         self.sunset_text = Label(self.small_font, max_glyphs=20)
         self.sunset_text.x = 205
         self.sunset_text.y = 62
-        self.sunset_text.color = 0xFF00FF
+        self.sunset_text.color = 0xFF8000
         self._text_group.append(self.sunset_text)
 
         self.windspeed_text = Label(self.medium_font, max_glyphs=20)
@@ -149,16 +149,30 @@ class OpenWeather_Graphics(displayio.Group):
         # "thunderstorm with heavy drizzle"
 
         sunrise = weather['sys']['sunrise']
-        sunrise_hr = time.localtime(sunrise).tm_hour - 7
+        sunrise_hr = (time.localtime(sunrise).tm_hour - 7) % 24
         sunrise_min = time.localtime(sunrise).tm_min
-        print("Sunrise %d:%02d" % (sunrise_hr,sunrise_min))
-        self.sunrise_text.text = "Sunrise %02d:%02d" % (sunrise_hr,sunrise_min)
+        if self.am_pm:
+            if sunrise_hr >= 12:
+                sunrise_hr -= 12
+                post_time = " PM"
+            else:
+                post_time = " AM"
+            if sunrise_hr == 0: sunrise_hr = 12
+        print("%d:%02d%s Rise" % (sunrise_hr,sunrise_min,post_time))
+        self.sunrise_text.text = "%02d:%02d%s Rise" % (sunrise_hr,sunrise_min,post_time)
 
         sunset = weather['sys']['sunset']
-        sunset_hr = time.localtime(sunset).tm_hour + 17
+        sunset_hr = (time.localtime(sunset).tm_hour -7) % 24
         sunset_min = time.localtime(sunset).tm_min
-        print("Sunset  %d:%02d" % (sunset_hr,sunset_min))
-        self.sunset_text.text = "Sunset  %02d:%02d" % (sunset_hr,sunset_min)
+        if self.am_pm:
+            if sunset_hr >= 12:
+                sunset_hr -= 12
+                post_time = " PM"
+            else:
+                post_time = " AM"
+            if sunset_hr == 0: sunset_hr = 12
+        print("%d:%02d%s Set" % (sunset_hr,sunset_min,post_time))
+        self.sunset_text.text = "%02d:%02d%s Set" % (sunset_hr,sunset_min,post_time)
 
         wind_dir = weather['wind']['deg']
         if (0 <= wind_dir < 45) or (315 <= wind_dir <= 360): wind_dir_tx = "North"
