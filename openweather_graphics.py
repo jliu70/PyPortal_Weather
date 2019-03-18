@@ -67,13 +67,13 @@ class OpenWeather_Graphics(displayio.Group):
         self.temp_text.color = 0xFFFFFF
         self._text_group.append(self.temp_text)
 
-        self.humid_text = Label(self.small_font, max_glyphs=20)
+        self.humid_text = Label(self.small_font, max_glyphs=10)
         self.humid_text.x = 15
         self.humid_text.y = 225
         self.humid_text.color = 0xFF00FF
         self._text_group.append(self.humid_text)
 
-        self.pressure_text = Label(self.small_font, max_glyphs=10)
+        self.pressure_text = Label(self.small_font, max_glyphs=12)
         self.pressure_text.x = 112
         self.pressure_text.y = 225
         self.pressure_text.color = 0xFF00FF
