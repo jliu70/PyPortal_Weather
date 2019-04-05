@@ -132,7 +132,7 @@ class OpenWeather_Graphics(displayio.Group):
             print("%s %d MPH" % (wind_dir_tx, windspeed))
             self.windspeed_text.text = "%s %d MPH" % (wind_dir_tx, windspeed)
         else:
-            print("No wind" % (wind_dir_tx, windspeed))
+            print("No wind")
             self.windspeed_text.text = "No wind"
 
         sunrise = weather['sys']['sunrise']
@@ -186,7 +186,7 @@ class OpenWeather_Graphics(displayio.Group):
         pressure = pressure * 0.0295300  # convert to in Hg
         print("%0.2f inHg" % pressure)
         self.pressure_text.text = "%0.2f inHg" % pressure
-        
+
         dew_point = ((humidity / 100) ** 0.125) * (112 + (0.9 * temperature)) + (0.1 * temperature) - 112
         dew_point = (dew_point*1.8) + 32  # convert to F
         print("DP %d °F" % dew_point)
