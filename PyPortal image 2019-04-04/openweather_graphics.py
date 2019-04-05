@@ -11,6 +11,8 @@ small_font = cwd+"/fonts/Arial-12.bdf"
 medium_font = cwd+"/fonts/Arial-16.bdf"
 large_font = cwd+"/fonts/Arial-Bold-24.bdf"
 
+compass = ['North @', 'NE @', 'East @', 'SE @', 'South @', 'SW @', 'West @', 'NW @']
+
 class OpenWeather_Graphics(displayio.Group):
     def __init__(self, root_group, *, am_pm=True, celsius=True):
         super().__init__(max_size=2)
@@ -120,10 +122,7 @@ class OpenWeather_Graphics(displayio.Group):
 
         try:
             wind_dir = weather['wind']['deg']
-            if (0 <= wind_dir < 45) or (315 <= wind_dir <= 360): wind_dir_tx = "North @"
-            if (45 <= wind_dir < 135): wind_dir_tx = "East @"
-            if (135 <= wind_dir < 225): wind_dir_tx = "South @"
-            if (225 <= wind_dir < 315): wind_dir_tx = "West @"
+            wind_dir_tx = compass[int(((wind_dir + 22.5) % 360) / 45)]
         except:
             wind_dir_tx = "----"
 
