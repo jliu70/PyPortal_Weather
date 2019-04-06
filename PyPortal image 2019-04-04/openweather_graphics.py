@@ -22,7 +22,7 @@ class OpenWeather_Graphics(displayio.Group):
         root_group.append(self)
         self._icon_group = displayio.Group(max_size=1)
         self.append(self._icon_group)
-        self._text_group = displayio.Group(max_size=11)
+        self._text_group = displayio.Group(max_size=12)
         self.append(self._text_group)
 
         self._icon_sprite = None
@@ -65,6 +65,12 @@ class OpenWeather_Graphics(displayio.Group):
         self.windspeed_text.color = 0xFFFFFF
         self._text_group.append(self.windspeed_text)
 
+        self.windgust_text = Label(self.small_font, max_glyphs=15)
+        self.windgust_text.x = 15
+        self.windgust_text.y = 74
+        self.windgust_text.color = 0xFF0000
+        self._text_group.append(self.windgust_text)
+
         self.temp_text = Label(self.large_font, max_glyphs=6)
         self.temp_text.x = 205
         self.temp_text.y = 190
@@ -91,7 +97,7 @@ class OpenWeather_Graphics(displayio.Group):
 
         self.main_text = Label(self.large_font, max_glyphs=20)
         self.main_text.x = 15
-        self.main_text.y = 175
+        self.main_text.y = 178
         self.main_text.color = 0xFFFFFF
         self._text_group.append(self.main_text)
 
@@ -125,6 +131,13 @@ class OpenWeather_Graphics(displayio.Group):
             wind_dir_tx = compass[int(((wind_dir + 22.5) % 360) / 45)]
         except:
             wind_dir_tx = "----"
+
+        try:
+            wind_gust = weather['wind']['gust']
+            print("%d MPH Gusts" % wind_gust)
+            self.windgust_text.text = "%d MPH Gusts" % wind_gust
+        except:
+            self.windgust_text.text = "               "
 
         windspeed = weather['wind']['speed']
         if wind_dir_tx != "----":
@@ -178,7 +191,7 @@ class OpenWeather_Graphics(displayio.Group):
         # "thunderstorm with heavy drizzle"
 
         humidity = weather['main']['humidity']  # % humidity
-        print(humidity)
+        print("%d %% RH" % humidity)
         self.humid_text.text = "%d %% RH" % humidity
 
         pressure = weather['main']['pressure']
