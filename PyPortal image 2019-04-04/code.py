@@ -41,6 +41,8 @@ gfx = openweather_graphics.OpenWeather_Graphics(pyportal.splash, am_pm=True, cel
 
 localtile_refresh = None
 weather_refresh = None
+pyportal.play_file("storm_tracker.wav", wait_to_finish=False)
+
 while True:
     # only query the online time once per hour (and on first run)
     if (not localtile_refresh) or (time.monotonic() - localtile_refresh) > 3600:
@@ -48,7 +50,7 @@ while True:
             print("Getting time from internet!")
             pyportal.get_local_time()
             localtile_refresh = time.monotonic()
-        except RuntimeError as e:
+        except (ValueError, RuntimeError) as e:  # ValueError added from quote.py change
             print("Some error occured, retrying! -", e)
             continue
 
@@ -59,7 +61,7 @@ while True:
             print("Response is", value)
             gfx.display_weather(value)
             weather_refresh = time.monotonic()
-        except RuntimeError as e:
+        except (ValueError, RuntimeError) as e:  # ValueError added from quote.py change
             print("Some error occured, retrying! -", e)
             continue
 
