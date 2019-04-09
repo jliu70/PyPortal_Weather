@@ -41,7 +41,7 @@ gfx = openweather_graphics.OpenWeather_Graphics(pyportal.splash, am_pm=True, cel
 
 localtile_refresh = None
 weather_refresh = None
-pyportal.play_file("storm_tracker.wav", wait_to_finish=False)
+pyportal.play_file("storm_tracker.wav", wait_to_finish=True)  # True to disable speaker after playing
 
 while True:
     # only query the online time once per hour (and on first run)
