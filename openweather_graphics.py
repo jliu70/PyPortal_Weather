@@ -95,15 +95,15 @@ class OpenWeather_Graphics(displayio.Group):
         self.dew_point_text.color = 0xFF00FF
         self._text_group.append(self.dew_point_text)
 
-        self.main_text = Label(self.large_font, max_glyphs=20)
+        self.main_text = Label(self.medium_font, max_glyphs=20)
         self.main_text.x = 15
-        self.main_text.y = 178
+        self.main_text.y = 180
         self.main_text.color = 0xFFFFFF
         self._text_group.append(self.main_text)
 
         self.description_text = Label(self.small_font, max_glyphs=60)
         self.description_text.x = 15
-        self.description_text.y = 205
+        self.description_text.y = 200
         self.description_text.color = 0xFFFFFF
         self._text_group.append(self.description_text)
 
