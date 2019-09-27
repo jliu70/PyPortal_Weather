@@ -73,7 +73,7 @@ class OpenWeather_Graphics(displayio.Group):
 
         self.temp_text = Label(self.large_font, max_glyphs=6)
         self.temp_text.x = 205
-        self.temp_text.y = 190
+        self.temp_text.y = 195
         self.temp_text.color = 0xFFFFFF
         self._text_group.append(self.temp_text)
 
