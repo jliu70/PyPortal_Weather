@@ -1,0 +1,32 @@
+{
+  "coord":{"lon":-119.28,"lat":46.28},
+  "weather":[{
+    "id":804,
+    "main":"Clear",
+    "description":"Perfect in every way",
+    "icon":"01d"}],
+  "base":"stations",
+  "main":{
+    "temp":296.00,
+    "pressure":1031,
+    "humidity":60,
+    "temp_min":275.37,
+    "temp_max":282.59},
+  "visibility":16093,
+  "wind":{
+    "speed":1.46,
+    "deg":180},
+  "clouds":{
+    "all":90},
+  "dt":1552606984,
+  "sys":{
+    "type":1,
+    "id":5676,
+    "message":0.0061,
+    "country":"US",
+    "sunrise":1552572604,
+    "sunset":1552615364},
+  "id":5808276,
+  "name":"Valhalla",
+  "cod":200
+}
